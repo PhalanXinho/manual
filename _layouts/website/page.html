@@ -1,0 +1,7 @@
+{### template.self also preserves Windows path separators when extending the theme. ###}
+{% extends template.self %}
+
+{% block javascript %}
+    {{ super() }}
+    <script src="{{ 'assets/reader/reader.js'|resolveFile }}"></script>
+{% endblock %}
