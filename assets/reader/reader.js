@@ -50,7 +50,7 @@ require(["gitbook", "jquery"], function (gitbook, $) {
         if (separator) {
             separator.setAttribute("aria-valuemax", Math.min(600, Math.floor(window.innerWidth / 2)));
             separator.setAttribute("aria-valuenow", sidebarWidth());
-            separator.setAttribute("aria-valuetext", sidebarWidth() + " píxeles");
+            separator.setAttribute("aria-valuetext", sidebarWidth() + " pixels");
         }
     }
 
@@ -72,7 +72,7 @@ require(["gitbook", "jquery"], function (gitbook, $) {
             '" step="' + step + '" data-reader-setting="' + name + '" aria-label="' + label + '">' +
             '<div class="reader-number"><input id="reader-' + name + '-number" type="number" min="' +
             min + '" max="' + max + '" step="' + step + '" data-reader-setting="' + name +
-            '" aria-label="' + label + ' en ' + unit + '"><span aria-hidden="true">px</span></div>' +
+            '" aria-label="' + label + ' in ' + unit + '"><span aria-hidden="true">px</span></div>' +
             '</div></div>';
     }
 
@@ -82,27 +82,27 @@ require(["gitbook", "jquery"], function (gitbook, $) {
         if (menu.length && !menu.find(".reader-controls").length) {
             // Keep the original theme buttons and their plugin handlers.
             const themes = menu.children(".buttons").last().detach().addClass("reader-themes");
-            themes.attr({ role: "group", "aria-label": "Tema de color" });
+            themes.attr({ role: "group", "aria-label": "Color theme" });
             themes.find("button").each(function (index) {
-                $(this).text(["Blanco", "Sepia", "Nocturno"][index]);
+                $(this).text(["White", "Sepia", "Night"][index]);
             });
             menu.children(".buttons").remove();
             const options = Object.keys(FAMILIES).map(function (key) {
                 return '<option value="' + key + '">' + FAMILIES[key].label + '</option>';
             }).join("");
-            menu.attr({ id: "reader-settings-panel", "aria-label": "Ajustes de lectura" });
+            menu.attr({ id: "reader-settings-panel", "aria-label": "Reading settings", lang: "en" });
             menu.append('<div class="reader-controls">' +
-                '<p class="reader-title">Ajustes de lectura</p>' +
-                '<div class="reader-control"><label for="reader-family">Fuente</label>' +
+                '<p class="reader-title">Reading settings</p>' +
+                '<div class="reader-control"><label for="reader-family">Font</label>' +
                 '<select id="reader-family">' + options + '</select></div>' +
-                numericControl("size", "Tamaño de letra", "píxeles") +
-                numericControl("width", "Ancho del texto", "píxeles") +
-                '<p class="reader-theme-label">Tema de color</p></div>');
+                numericControl("size", "Font size", "pixels") +
+                numericControl("width", "Text width", "pixels") +
+                '<p class="reader-theme-label">Color theme</p></div>');
             menu.find(".reader-controls").append(themes);
             menu.find(".reader-controls").append(
-                '<button type="button" class="reader-reset">Restablecer ajustes</button>');
+                '<button type="button" class="reader-reset">Reset settings</button>');
             $(".font-settings .toggle-dropdown").attr({
-                "aria-label": "Ajustes de lectura", "aria-controls": "reader-settings-panel",
+                "aria-label": "Reading settings", "aria-controls": "reader-settings-panel", lang: "en",
                 "aria-expanded": "false"
             });
             menu[0].parentElement.addEventListener("keydown", handleMenuKey);
@@ -116,9 +116,9 @@ require(["gitbook", "jquery"], function (gitbook, $) {
             separator.tabIndex = 0;
             separator.setAttribute("role", "separator");
             separator.setAttribute("aria-orientation", "vertical");
-            separator.setAttribute("aria-label", "Ancho del índice");
+            separator.setAttribute("aria-label", "Table of contents width");
             separator.setAttribute("aria-valuemin", "240");
-            separator.title = "Arrastra para cambiar el ancho del índice. Usa las flechas para ajustarlo con el teclado.";
+            separator.title = "Drag to resize the table of contents. Use the arrow keys to adjust its width.";
             book.appendChild(separator);
             separator.addEventListener("pointerdown", startDrag);
             separator.addEventListener("pointermove", moveDrag);

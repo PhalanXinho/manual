@@ -1,6 +1,20 @@
 {### template.self also preserves Windows path separators when extending the theme. ###}
 {% extends template.self %}
 
+{% block style %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ 'assets/brand/site.css'|resolveFile }}">
+{% endblock %}
+
+{% block book_sidebar %}
+    <a class="h2train-brand" href="{{ 'README.md'|resolveFile }}" aria-label="H2Train — manual home">
+        <span class="h2train-brand-image">
+            <img src="{{ 'assets/brand/logo.png'|resolveFile }}" alt="H2Train" width="1425" height="384">
+        </span>
+    </a>
+    {{ super() }}
+{% endblock %}
+
 {% block javascript %}
     {{ super() }}
     <script src="{{ 'assets/reader/reader.js'|resolveFile }}"></script>
