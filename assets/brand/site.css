@@ -69,6 +69,90 @@
     background: transparent;
 }
 
+.toc-actions {
+    display: flex;
+    gap: 8px;
+    margin: 0 16px 12px;
+}
+
+.toc-actions button {
+    flex: 1;
+    min-width: 0;
+    padding: 7px 5px;
+    border: 1px solid var(--brand-line);
+    border-radius: 4px;
+    color: var(--brand-muted);
+    background: transparent;
+    font: 12px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    cursor: pointer;
+}
+
+.toc-actions button:hover {
+    color: var(--brand-link);
+    background: var(--brand-soft);
+    border-color: var(--brand-link);
+}
+
+.book .book-summary li.toc-branch {
+    position: relative;
+}
+
+.book[class] .book-summary ul.summary li.toc-branch > a,
+.book[class] .book-summary ul.summary li.toc-branch > span {
+    padding-right: 42px;
+}
+
+.book .book-summary ul.summary ul.articles {
+    margin: 2px 0 6px 7px;
+    padding-left: 12px;
+    border-left: 1px solid var(--brand-line);
+}
+
+.book .book-summary ul.articles[hidden] {
+    display: none;
+}
+
+.toc-toggle {
+    display: grid;
+    place-items: center;
+    position: absolute;
+    z-index: 1;
+    top: 2px;
+    right: 4px;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border: 0;
+    border-radius: 4px;
+    color: var(--brand-muted);
+    background: transparent;
+    cursor: pointer;
+}
+
+.toc-toggle::after {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: translateY(-2px) rotate(45deg);
+}
+
+.toc-toggle[aria-expanded="true"]::after {
+    transform: translateY(2px) rotate(225deg);
+}
+
+.toc-toggle:hover {
+    color: var(--brand-link);
+    background: var(--brand-soft);
+}
+
+.book .toc-toggle:focus-visible,
+.book .toc-actions button:focus-visible {
+    outline: 2px solid var(--brand-link);
+    outline-offset: -2px;
+}
+
 .book #book-search-input:focus-within {
     border-color: var(--brand-link);
     outline: 1px solid var(--brand-link);
@@ -186,6 +270,38 @@
 .book .markdown-section pre {
     border: 1px solid var(--brand-line);
     border-radius: 6px;
+}
+
+.contributor-credit {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 20px 0;
+    padding-top: 16px;
+    border-top: 1px solid var(--brand-line);
+}
+
+.book .markdown-section .contributor-credit > img {
+    flex: 0 0 64px;
+    width: 64px;
+    height: 64px;
+    border: 1px solid var(--brand-line);
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.contributor-credit-details {
+    min-width: 0;
+}
+
+.book .markdown-section .contributor-credit-details p {
+    margin: 3px 0;
+    color: var(--brand-muted);
+    font-size: 0.85em;
+}
+
+.contributor-credit-details a {
+    font-size: 0.9em;
 }
 
 .book[class] .book-body .page-wrapper .page-inner section.normal blockquote {

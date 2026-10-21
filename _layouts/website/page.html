@@ -12,10 +12,15 @@
             <img src="{{ 'assets/brand/logo.png'|resolveFile }}" alt="H2Train" width="1425" height="384">
         </span>
     </a>
+    <div class="toc-actions" role="group" aria-label="Chapter sections" lang="en">
+        <button type="button" data-toc-action="expand">Expand all</button>
+        <button type="button" data-toc-action="collapse">Collapse all</button>
+    </div>
     {{ super() }}
 {% endblock %}
 
 {% block javascript %}
     {{ super() }}
     <script src="{{ 'assets/reader/reader.js'|resolveFile }}"></script>
+    <script src="{{ 'assets/reader/sidebar.js'|resolveFile }}"></script>
 {% endblock %}
