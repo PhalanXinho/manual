@@ -1,0 +1,251 @@
+@font-face {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("fonts/Poppins-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("fonts/Poppins-Bold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: Poppins;
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url("fonts/Poppins-Italic.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: Poppins;
+    font-style: italic;
+    font-weight: 700;
+    font-display: swap;
+    src: url("fonts/Poppins-BoldItalic.ttf") format("truetype");
+}
+
+:root {
+    --reader-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --reader-size: 16px;
+    --reader-width: 800px;
+    --reader-sidebar: 300px;
+}
+
+.book .book-body .page-inner {
+    max-width: var(--reader-width);
+    width: 100%;
+}
+
+.book .book-body .page-wrapper .page-inner section {
+    font-family: var(--reader-font);
+    font-size: var(--reader-size);
+}
+
+.book .font-settings {
+    --reader-control-bg: #fff;
+    --reader-control-text: #364149;
+    --reader-control-border: #c2c9cf;
+    --reader-control-accent: #0868b9;
+}
+
+.book.color-theme-1 .font-settings {
+    --reader-control-bg: #f3eacb;
+    --reader-control-text: #704214;
+    --reader-control-border: #a79775;
+    --reader-control-accent: #8b4d16;
+}
+
+.book.color-theme-2 .font-settings {
+    --reader-control-bg: #252936;
+    --reader-control-text: #d0d9e5;
+    --reader-control-border: #737d91;
+    --reader-control-accent: #8fcaff;
+}
+
+.book .font-settings .dropdown-menu {
+    width: 300px;
+    max-width: calc(100vw - 70px);
+    max-height: calc(100dvh - 65px);
+    overflow-y: auto;
+    background-color: var(--reader-control-bg);
+    border-color: var(--reader-control-border);
+    color: var(--reader-control-text);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: left;
+}
+
+.reader-controls {
+    padding: 16px;
+}
+
+.reader-title {
+    margin: 0 0 16px;
+    color: inherit;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.reader-control {
+    margin-bottom: 18px;
+}
+
+.reader-control label,
+.reader-theme-label {
+    display: block;
+    margin: 0 0 7px;
+    color: inherit;
+    font-weight: 600;
+}
+
+.reader-control select,
+.reader-number input {
+    min-width: 0;
+    padding: 6px 8px;
+    border: 1px solid var(--reader-control-border);
+    border-radius: 4px;
+    color: var(--reader-control-text);
+    background: var(--reader-control-bg);
+    font: inherit;
+    line-height: 1.5;
+}
+
+.reader-control select {
+    width: 100%;
+}
+
+.reader-control-inputs {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.reader-control input[type="range"] {
+    flex: 1;
+    width: 0;
+    min-width: 30px;
+    margin: 0;
+    accent-color: var(--reader-control-accent);
+}
+
+.reader-number {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.reader-number input {
+    width: 78px;
+}
+
+.book .font-settings .reader-themes {
+    display: flex;
+    border: 1px solid var(--reader-control-border);
+    border-radius: 4px;
+}
+
+.book .reader-themes .button {
+    float: none;
+    flex: 1;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+}
+
+.book .reader-themes .button[aria-pressed="true"] {
+    font-weight: 700;
+    box-shadow: inset 0 -3px 0 var(--reader-control-accent);
+}
+
+.reader-reset {
+    width: 100%;
+    margin-top: 16px;
+    padding: 8px;
+    border: 1px solid var(--reader-control-border);
+    border-radius: 4px;
+    color: inherit;
+    background: transparent;
+    font: inherit;
+    cursor: pointer;
+}
+
+.book .font-settings :focus-visible {
+    outline: 2px solid var(--reader-control-accent);
+    outline-offset: 2px;
+}
+
+.reader-sidebar-resizer {
+    display: none;
+}
+
+@media screen and (min-width: 601px) {
+    .book .book-summary {
+        width: var(--reader-sidebar);
+        left: calc(-1 * var(--reader-sidebar));
+    }
+
+    .book.with-summary .book-summary {
+        left: 0;
+    }
+
+    .book.with-summary .book-body {
+        left: var(--reader-sidebar);
+    }
+
+    .book.with-summary .reader-sidebar-resizer {
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: calc(var(--reader-sidebar) - 4px);
+        width: 8px;
+        z-index: 5;
+        cursor: col-resize;
+        touch-action: none;
+    }
+
+    .reader-sidebar-resizer::after {
+        content: "";
+        position: absolute;
+        inset: 0 3px;
+        background: #8b98a5;
+        opacity: 0.3;
+    }
+
+    .reader-sidebar-resizer:hover::after,
+    .reader-sidebar-resizer:focus-visible::after,
+    .reader-resizing .reader-sidebar-resizer::after {
+        background: #008cff;
+        opacity: 1;
+    }
+
+    .reader-sidebar-resizer:focus-visible {
+        outline: 2px solid #008cff;
+        outline-offset: -2px;
+    }
+}
+
+/* Match HonKit's mobile breakpoint, including its overlapping rule at exactly 600px. */
+@media screen and (max-width: 600px) {
+    .book.with-summary .book-body {
+        left: 0;
+    }
+}
+
+.reader-resizing,
+.reader-resizing * {
+    cursor: col-resize !important;
+    user-select: none !important;
+}
+
+.reader-resizing .book .book-body,
+.reader-resizing .book .book-summary {
+    transition: none;
+}

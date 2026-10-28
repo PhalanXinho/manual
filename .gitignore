@@ -1,0 +1,25 @@
+# Dependencias de Node.js
+node_modules/
+
+# Sitio generado por Honkit
+_book/
+
+# Archivos de entorno y secretos locales
+.env
+.env.*
+!.env.example
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Temporales de Windows y Office
+Thumbs.db
+Desktop.ini
+~$*
+
+# Archivos del sistema y editores
+.DS_Store
+.vscode/
+.idea/
