@@ -1,4 +1,4 @@
-# 4. Installing Eclipse Kura
+# 3. Installing Eclipse Kura
 
 This procedure installs Eclipse Kura 5.6.2 and Eclipse Temurin JDK 17 on a
 Raspberry Pi using the commands below. Run them in order in a terminal on the
@@ -9,7 +9,7 @@ uses **`trixie`**, so it must match the operating system's Debian release. Confi
 these prerequisites before continuing. You also need internet access, a user
 with `sudo` privileges, and `wget` available for the download step.
 
-## 4.1 Update the Operating System
+## 3.1 Update the Operating System
 
 Refresh the list of available packages and versions from the configured repositories.
 
@@ -24,7 +24,7 @@ Confirm the changes when prompted.
 sudo apt upgrade
 ```
 
-## 4.2 Download the Kura Installer
+## 3.2 Download the Kura Installer
 
 Download the Kura 5.6.2 installer for 64-bit ARM and save it in the current directory.
 
@@ -32,9 +32,9 @@ Download the Kura 5.6.2 installer for 64-bit ARM and save it in the current dire
 wget http://download.eclipse.org/kura/releases/5.6.2/kura_5.6.2_generic-aarch64_installer.deb
 ```
 
-Keep this file in the current directory for the installation step in section 4.4.
+Keep this file in the current directory for the installation step in section 3.4.
 
-## 4.3 Install JDK 17
+## 3.3 Install JDK 17
 
 Install the download tools (`wget` and `curl`), the signing-key tool (`gpg`), and
 trusted certificate authorities (`ca-certificates`). The `-y` option automatically
@@ -101,7 +101,7 @@ Java selection before continuing.
 javac -version
 ```
 
-## 4.4 Install Kura and Restart the Device
+## 3.4 Install Kura and Restart the Device
 
 Install the downloaded Kura package and its dependencies through APT. The `./`
 prefix tells APT to use the installer file in the current directory.
@@ -117,12 +117,12 @@ ends the current SSH session; wait for the device to start before reconnecting.
 sudo reboot
 ```
 
-## 4.5 Accessing the Administration Interface
+## 3.5 Accessing the Administration Interface
 
 After the Raspberry Pi restarts, open the Kura administration console and
 complete the initial login setup.
 
-### 4.5.1 Open the Console
+### 3.5.1 Open the Console
 
 Choose the address according to where you are running the browser:
 
@@ -134,7 +134,7 @@ Choose the address according to where you are running the browser:
 Replace `<ip_address>` with the Raspberry Pi's IP address. When using another
 computer, `localhost` refers to that computer, so use the Raspberry Pi's address.
 
-### 4.5.2 Handle the Certificate Warning
+### 3.5.2 Handle the Certificate Warning
 
 The browser may display a certificate warning, as shown below. Kura's default
 HTTPS certificate is self-signed, so the browser cannot automatically verify
@@ -146,7 +146,7 @@ For this initial setup, confirm that the address belongs to your Raspberry Pi,
 then open **Advanced** and select **Proceed to localhost** or the equivalent
 option for the device's IP address. The wording may vary between browsers.
 
-### 4.5.3 Sign In and Change the Password
+### 3.5.3 Sign In and Change the Password
 
 For a fresh installation, use the default credentials:
 

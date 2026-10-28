@@ -58,7 +58,7 @@ Raspberry Pi OS was previously known as Raspbian. Official images are available
 from the [Raspberry Pi OS download page](https://www.raspberrypi.com/software/operating-systems/).
 
 Use the **64-bit edition** for the procedure in
-[Chapter 4: Installing Eclipse Kura](04-installing-eclipse-kura.md), which uses
+[Chapter 3: Installing Eclipse Kura](03-installing-eclipse-kura.md), which uses
 the `aarch64` installer. The Adoptium repository configured in that chapter also
 targets the `trixie` release.
 
@@ -78,12 +78,12 @@ connect Eclipse Kura and Eclipse Kapua from different geographical locations.
 ### 2.5.1 Prepare the System
 
 Update the package lists and upgrade installed system packages before installing
-Kura. The commands are provided in section 4.1.
+Kura. The commands are provided in section 3.1.
 
-An existing Kura or Java installation is not required: Chapter 4 covers the
+An existing Kura or Java installation is not required: Chapter 3 covers the
 installation of Eclipse Temurin JDK 17, the required utilities, and Eclipse Kura
 5.6.2. Ensure that `wget` is available before the installer download step in
-section 4.2. For the current remote connectivity setup, also install and configure
+section 3.2. For the current remote connectivity setup, also install and configure
 Tailscale as described below.
 
 ### 2.5.2 Understand the Temporary VPN Setup

@@ -1,11 +1,11 @@
-# 6. Connecting to Cloud Multiplatform H2Train with Eclipse Kapua
+# 4. Connecting to Cloud Multiplatform H2Train with Eclipse Kapua
 
 This chapter describes how to register a Kapua user and configure Eclipse Kura
 for device maintenance through Cloud Multiplatform H2Train. Complete the steps
 in the order presented, using the connection settings for the deployment
 described below.
 
-## 6.1 Register a Kapua User
+## 4.1 Register a Kapua User
 
 Before configuring the device, create a user on the Kapua server through the
 [Kapua registration page](https://kapua-register.vercel.app/). This application
@@ -26,10 +26,10 @@ the user has been created successfully, as illustrated below.
 ![The ulpgc user listed in the Kapua administration console](../img/kapua_console.png)
 
 Registration provides each user with individual credentials for broker
-authentication. The maintenance connection configured in section 6.5 uses a
+authentication. The maintenance connection configured in section 4.5 uses a
 dedicated maintenance account with its own roles and permissions.
 
-## 6.2 Import the SSL Certificate into Kura
+## 4.2 Import the SSL Certificate into Kura
 
 Download the SSL certificate provided in the
 [deployment certificate Gist](https://gist.github.com/PhalanXinho/8a4f244f9a75e731508249004db45940).
@@ -42,7 +42,7 @@ Then import it through the Kura administration console:
 
 The certificate is used to establish trust for the secure connection to the broker.
 
-## 6.3 Create the Maintenance Cloud Connection
+## 4.3 Create the Maintenance Cloud Connection
 
 In the Kura administration console, open **Cloud Connections** and select
 **New Connection**. Configure the connection as follows:
@@ -54,7 +54,7 @@ In the Kura administration console, open **Cloud Connections** and select
 
 Create the connection, then continue with its data service configuration.
 
-## 6.4 Enable Automatic Connection at Startup
+## 4.4 Enable Automatic Connection at Startup
 
 Open the **DataService-Maintainer** section of the new cloud connection.
 
@@ -62,7 +62,7 @@ Open the **DataService-Maintainer** section of the new cloud connection.
 2. Select **Apply** to save the changes.
 3. Open **MqttDataTransport-Maintainer** to configure the broker connection.
 
-## 6.5 Configure the MQTT Transport
+## 4.5 Configure the MQTT Transport
 
 Configure **MqttDataTransport-Maintainer** using the values shown below and in
 the accompanying screenshot.
@@ -87,7 +87,7 @@ as the password for the deployment described in this chapter.
 The **Client-id** may be changed to identify the device. Keep all other settings
 as shown in the screenshot, then select **Apply** to save the configuration.
 
-## 6.6 Configure the Command Service
+## 4.6 Configure the Command Service
 
 Select **CommandService** in the left navigation panel. Configure the service
 as shown in the following screenshot, entering `1234` in **Command Password Value**.
@@ -105,7 +105,7 @@ as shown in the following screenshot, entering `1234` in **Command Password Valu
 
 Keep the remaining settings as shown and select **Apply** to save the changes.
 
-## 6.7 Configuration Outcome
+## 4.7 Configuration Outcome
 
 These steps complete the Kura configuration for device maintenance in the
 described deployment. User registration provides individual broker credentials,

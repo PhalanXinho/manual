@@ -17,10 +17,10 @@ the installation and connection instructions.
 ## Reading Guide
 
 - Start with **System Overview** to understand the components and their roles.
-- Follow chapters 2 through 6 for the path from prerequisites to cloud connection.
-- Use **Data Collection and Connection Validation** to plan an end-to-end check.
-- Consult the final chapters for ongoing operation, troubleshooting, and references.
+- Follow chapters 2 through 4 for the path from prerequisites to cloud connection.
+- Consult chapter 5 for terminology and reference material.
+- Use chapter 6 for the revision history and contact details.
 
-The chapter index is maintained in [SUMMARY.md](SUMMARY.md). Each chapter is a
-Markdown file that HonKit uses to build the manual.
+Use the chapter index in the navigation panel to move between chapters and
+sections. Each chapter is a Markdown file that HonKit uses to build the manual.
 

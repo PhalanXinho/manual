@@ -1,24 +1,24 @@
-# 10. Glossary and Reference Material
+# 5. Glossary and Reference Material
 
 Collect terminology, official documentation, and reusable reference information
 for the procedures developed in this manual.
 
-## 10.1 Glossary
+## 5.1 Glossary
 
 Define the terms used throughout the manual, including gateway, edge device,
 MQTT, broker, topic, TLS, account scope, device identifier, asset, and wire.
 
-## 10.2 Validated Deployment Profile
+## 5.2 Validated Deployment Profile
 
 Record the supported hardware, operating system, Kura and Kapua versions, and
 the date on which the deployment was tested.
 
-## 10.3 Configuration Reference
+## 5.3 Configuration Reference
 
 Create a table of required settings with their meaning, source, and non-secret
 example values. Keep passwords, private keys, and tokens outside the manual.
 
-## 10.4 Official Documentation
+## 5.4 Official Documentation
 
 - [Eclipse Kura documentation](https://eclipse-kura.github.io/kura/)
 - [Kura installation guide for release 5.6](https://eclipse-kura.github.io/kura/docs-release-5.6/getting-started/install-kura/)
@@ -31,7 +31,7 @@ deployment version. Use documentation matching the versions recorded in the
 validated deployment profile. The Kapua connection guide describes a local
 example; obtain H2Train-specific connection settings from its administrator.
 
-## 10.5 H2Train Deployment Resources
+## 5.5 H2Train Deployment Resources
 
 Add the approved H2Train console link, internal connection guide, and support
 contact once they have been provided by the platform administrator.

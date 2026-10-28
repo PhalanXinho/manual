@@ -1,15 +1,15 @@
-# 11. Changelog
+# 6. Changelog
 
 This chapter records revisions to the manual and provides contact details for
 reporting issues or suggesting improvements.
 
-## 11.1 Revision History
+## 6.1 Revision History
 
 | Date | Revision | Reviewed and Edited By | Affiliation |
 | --- | --- | --- | --- |
 | 21 October 2026 | Manual reviewed and edited. | Jiahao Yang | H2TRAIN, ULPGC |
 
-## 11.2 Feedback and Contact
+## 6.2 Feedback and Contact
 
 For issues or suggestions regarding this manual, contact the following email:
 
