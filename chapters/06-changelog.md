@@ -7,7 +7,7 @@ reporting issues or suggesting improvements.
 
 | Date | Revision | Reviewed and Edited By | Affiliation |
 | --- | --- | --- | --- |
-| 21 October 2026 | Manual reviewed and edited. | Jiahao Yang | H2TRAIN, ULPGC |
+| 28 October 2026 | Manual reviewed and edited. | Jiahao Yang | H2TRAIN, ULPGC |
 
 ## 6.2 Feedback and Contact
 
