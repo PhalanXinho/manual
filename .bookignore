@@ -1,0 +1,7 @@
+# Repository configuration and publishing instructions are not website assets.
+.github/
+.gitignore
+.bookignore
+DEPLOYMENT.md
+package.json
+package-lock.json
