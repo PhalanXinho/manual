@@ -37,7 +37,10 @@ chapters 2 through 4.
 | Package repository | A source of software packages and package information used by APT, such as the Adoptium repository. |
 | Root and `sudo` | Root is the Linux administrator account. `sudo` allows an authorized user to run a command with elevated privileges. |
 | SSH | Secure Shell. A protocol used to open an encrypted remote terminal session on the Raspberry Pi. |
-| Working directory | The directory in which a command runs. The Command Service configuration uses `/tmp` for this purpose. |
+| Working directory | The directory in which a command runs. Run the receiver installation commands from the downloaded repository directory. |
+| JAR | Java Archive. The `cardia-kura-receiver.jar` file contains the prebuilt receiver installed in Kura. |
+| OSGi bundle | A modular Java component installed in an OSGi runtime. The receiver bundle registers Kura's update-offer handler. |
+| ACL | Access Control List. File permissions granting the application user read access to offers, including files created or replaced later. |
 
 ### 5.1.3 Networking, Security, and VPN Access
 
@@ -73,7 +76,8 @@ For installation and auth key details, see the Tailscale resources in
 | Client ID | The identifier representing a device's MQTT client. It must be unique within the account used by this deployment. |
 | Cloud connection | The configured group of Kura services used to communicate with a cloud platform. This manual creates a dedicated maintenance connection. |
 | CloudService | The Kura service providing cloud messaging and management functions above the data service and transport layers. |
-| CommandService | The Kura service configured to receive and execute remote commands for maintenance operations. |
+| Cardia | The local application that reads update offers, presents notifications, and performs updates selected by the user. |
+| Campaign | An update offer identified by `campaignId`, with a target version and expiration time. |
 | DataService | The Kura service responsible for managing message delivery above the transport layer. Its startup option controls automatic connection in this procedure. |
 | Eclipse Kapua | The cloud platform used here to manage connected devices, user access, and device communication. |
 | Eclipse Kura | The software framework installed on the Raspberry Pi to configure the gateway and connect it to cloud services. |
@@ -84,7 +88,11 @@ For installation and auth key details, see the Tailscale resources in
 | MQTT and MQTTS | MQTT is a publish/subscribe messaging protocol. The `mqtts://` scheme in the broker URL indicates MQTT protected by TLS. |
 | MqttDataTransport | The Kura transport service that connects to the MQTT broker using the configured address, credentials, and client ID. |
 | PID and factory PID | A Persistent Identifier identifies a service configuration in Kura. A factory PID identifies the factory used to create service instances; a service PID identifies the configured instance. |
-| Timeout | The time limit for an operation. MQTT transport and Command Service timeouts apply to different operations and are configured separately. |
+| Timeout | The time limit for an operation, such as an interaction between Kura's MQTT transport and the broker. |
+| Device request endpoint | Kapua's `{scopeId}/devices/{deviceId}/requests/` API resource for forwarding requests to a device. |
+| JSON | JavaScript Object Notation. The structured text format used for the update offer payload and the local offer file. |
+| Update offer | A notification containing `campaignId`, `version`, and `expiresAt`. The receiver stores it for Cardia to process. |
+| Receiver acknowledgment | The receiver's `status=received` response after saving an offer. It confirms receipt rather than completion of an application update. |
 | Topic | The name used to route published MQTT messages to interested subscribers. |
 | Topic Context Account-Name | The account name Kura inserts into its topic namespace. The documented configuration uses `H2TRAIN`; this value is distinct from the broker username. |
 
@@ -120,6 +128,8 @@ use the deployment-specific settings in chapter 4 for H2Train.
 | [Data Transport Service Configuration](https://eclipse-kura.github.io/kura/docs-release-5.6/gateway-configuration/data-transport-service-configuration/) | MQTT broker settings, client identity, sessions, and connection timeouts. |
 | [Eclipse Kapua repository](https://github.com/eclipse-kapua/kapua) | Project documentation, source code, and deployment guides. |
 | [Kura-to-Kapua connection guide](https://github.com/eclipse-kapua/kapua/blob/develop/docs/kuraKapuaDocs.md) | An upstream connection example to complement the H2Train procedure. |
+| [H2Train kura-receiver](https://github.com/H2TRAIN-Organization/kura-receiver) | Prebuilt OSGi receiver JAR and installation and file-access scripts for Kura 5.6.2. |
+| [Receiver README](https://github.com/H2TRAIN-Organization/kura-receiver/blob/main/README.md) | Installation, update offer handling, and Cardia integration instructions. |
 | [Adoptium Linux installation guide](https://adoptium.net/en-GB/installation/linux) | Configuring the Temurin package repository and installing the required JDK. |
 
 ### 5.2.3 Tailscale

@@ -26,7 +26,7 @@ The manual is organized as follows:
 | [1. System Overview](chapters/01-system-overview.md) | Components, architecture, communication, and access mechanisms. |
 | [2. Hardware, Software, and Prerequisites](chapters/02-requirements.md) | Device requirements and VPN access. |
 | [3. Installing Eclipse Kura](chapters/03-installing-eclipse-kura.md) | Java and Kura installation and initial console access. |
-| [4. Connecting to Cloud Multiplatform H2Train with Eclipse Kapua](chapters/04-connecting-to-h2train.md) | Registration and maintenance service configuration. |
+| [4. Connecting to Cloud Multiplatform H2Train with Eclipse Kapua](chapters/04-connecting-to-h2train.md) | Cloud connection, OSGi receiver installation, and notification-based updates. |
 | [5. Glossary and Reference Material](chapters/05-glossary-and-references.md) | Definitions, external documentation, and deployment resources. |
 | [6. Changelog](chapters/06-changelog.md) | Revision history and contact details. |
 

@@ -172,8 +172,7 @@ in [section 2.5.6](#256-connect-the-device-to-the-tailscale-network).
 
 ### 2.5.6 Connect the Device to the Tailscale Network
 
-With Tailscale installed and your auth key available, complete the device
-registration:
+With Tailscale installed and the auth key available, register the device:
 
 1. Copy the device registration command provided by the H2Train registration page.
 2. Paste and run it in the Raspberry Pi terminal. Use the command containing your
@@ -184,8 +183,18 @@ registration:
    tailscale status
    ```
 
-This command displays the device's Tailscale connection status and the peers
-visible to it on the network.
+This command displays the device's connection status and the peers visible on
+the Tailscale network.
+
+4. Enable the routes advertised on the Tailscale network by running the
+   following command with administrator privileges:
+
+   ```bash
+   sudo tailscale set --accept-routes=true
+   ```
+
+This setting allows the device to reach the Eclipse Kapua microservices through
+the Tailscale network, including the broker.
 
 ### 2.5.7 Request Assistance
 

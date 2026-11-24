@@ -11,7 +11,9 @@ travel between them, and how access is controlled.
 | Raspberry Pi 4 Model B | Hosts the operating system, Java runtime, and Kura installation. It acts as the edge gateway. |
 | Raspberry Pi OS | Provides the Linux environment, network interfaces, package-management tools, and administrative access needed to install and operate the software. |
 | Eclipse Temurin JDK 17 | Supplies the Java runtime used to execute Kura, together with Java development tools. |
-| Eclipse Kura | Runs on the Raspberry Pi and provides the administration console, cloud connection services, and remote command execution service. |
+| Eclipse Kura | Runs on the Raspberry Pi and provides the administration console and cloud connection services used to receive update offers. |
+| Java OSGi receiver | Registers the `CARDIA-V1` request handler in Kura and stores incoming update offers in a local JSON file. |
+| Cardia application | Reads the update offers, notifies the desktop user, and manages the application update process. |
 | Eclipse Kapua | Provides the cloud environment used for user access, device communication, and maintenance management. |
 | Tailscale | Provides the private network connectivity used to connect the device and the Kapua environment from different locations. |
 | H2Train registration services | Provide the web forms used to request Tailscale access and create individual Kapua users. |
@@ -51,8 +53,8 @@ the current implementation while that deployment is being prepared.
 Kura initiates the connection to the broker using the configured account,
 credentials, and client ID. The broker routes messages according to their MQTT
 topics and the permissions assigned to the connecting account. Communication
-over this connection supports messages from the device and management requests
-sent toward the device.
+over this connection supports messages from the device and update offers sent
+toward the device.
 
 The maintenance connection is configured through three related Kura services:
 
@@ -63,15 +65,23 @@ The maintenance connection is configured through three related Kura services:
 - **MqttDataTransport-Maintainer:** defines the broker endpoint, account context,
   authentication credentials, client ID, and MQTT connection settings.
 
-The **CommandService** handles remote command execution on the Raspberry Pi.
-Its configuration includes a command password, working directory, execution
-timeout, and privilege setting. These settings prepare the device for the
-maintenance operations described in the deployment.
+Update delivery follows this path:
+
+1. An authorized client submits a request through Kapua's
+   `{scopeId}/devices/{deviceId}/requests/` endpoint.
+2. Kapua forwards the request to the device through the existing cloud connection.
+3. The Java OSGi receiver handles `PUT update-offer` for application ID `CARDIA-V1`
+   and stores the offer in `/var/lib/cardia-kura/update-offer.json`.
+4. Cardia reads the file and presents eligible updates to the local user.
+5. Cardia performs the update process when the user selects **Update**.
+
+The receiver acknowledges receipt after storing the offer. Application update
+execution belongs to Cardia; its completion is separate from that acknowledgment.
 
 ## 1.4 Authentication and Access Control
 
 The system uses separate credentials and permissions for network access, user
-identity, broker communication, and remote commands.
+identity, broker communication, and application access to local offer files.
 
 | Access mechanism | Role |
 | --- | --- |
@@ -80,7 +90,7 @@ identity, broker communication, and remote commands.
 | Individual Kapua account | Identifies a registered user with the role assigned by the registration system. |
 | Maintenance broker credentials | Authenticate Kura's maintenance connection with the dedicated account and its assigned permissions. |
 | Broker certificate trust | Allows Kura to validate the broker certificate using the certificate material imported into SSLKeystore. |
-| Command password | Provides the password configured for remote command requests handled by CommandService. |
+| Operating system file ACL | Gives the Linux user running Cardia read access to the receiver's offer files and access to their directory. |
 
 The device's MQTT client ID identifies its connection and must be unique within
 the account. The Tailscale device name and the Kapua username are configured

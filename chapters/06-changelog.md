@@ -7,7 +7,22 @@ reporting issues or suggesting improvements.
 
 | Date | Revision | Reviewed and Edited By | Affiliation |
 | --- | --- | --- | --- |
+| 24 November 2026 | Updated the maintenance procedure to use the OSGi notification receiver and local application update flow. | Jiahao Yang | H2TRAIN, ULPGC |
 | 28 October 2026 | Manual reviewed and edited. | Jiahao Yang | H2TRAIN, ULPGC |
+
+### 24 November 2026
+
+- Replaced the CommandService and remote script execution procedure with the
+  `kura-receiver` OSGi component and Kapua device requests.
+- Retained the dedicated `maintenance` account, MQTT transport, broker
+  certificate, and maintenance cloud connection.
+- Added instructions for installing the prebuilt JAR and granting the Cardia
+  user read access to local update offers through operating system ACLs.
+- Documented notification delivery, receiver acknowledgments, and the
+  application-managed update process.
+- Updated the system overview, glossary, references, and chapter navigation.
+- Included Tailscale route acceptance and replaced the published broker
+  password with an instruction to obtain it from the administrator.
 
 ## 6.2 Feedback and Contact
 
