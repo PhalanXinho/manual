@@ -20,6 +20,8 @@ reporting issues or suggesting improvements.
   user read access to local update offers through operating system ACLs.
 - Documented notification delivery, receiver acknowledgments, and the
   application-managed update process.
+- Adapted section 4.7 for device users, explaining notification delivery and
+  application choices without Kapua administration or request-sending instructions.
 - Updated the system overview, glossary, references, and chapter navigation.
 - Included Tailscale route acceptance and replaced the published broker
   password with an instruction to obtain it from the administrator.

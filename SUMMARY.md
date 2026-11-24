@@ -41,7 +41,7 @@
     * [4.6.1 Check the Prerequisites](chapters/04-connecting-to-h2train.md#461-check-the-prerequisites)
     * [4.6.2 Download and Install the Prebuilt JAR](chapters/04-connecting-to-h2train.md#462-download-and-install-the-prebuilt-jar)
     * [4.6.3 Grant the Application User Read Access](chapters/04-connecting-to-h2train.md#463-grant-the-application-user-read-access)
-  * [4.7 Receive and Verify Update Notifications](chapters/04-connecting-to-h2train.md#47-receive-and-verify-update-notifications)
+  * [4.7 How Update Notifications Work](chapters/04-connecting-to-h2train.md#47-how-update-notifications-work)
   * [4.8 Configuration Outcome](chapters/04-connecting-to-h2train.md#48-configuration-outcome)
 * [5. Glossary and Reference Material](chapters/05-glossary-and-references.md)
   * [5.1 Glossary](chapters/05-glossary-and-references.md#51-glossary)

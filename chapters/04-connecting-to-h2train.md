@@ -170,58 +170,26 @@ replace `$(id -un)` with the application user's username. Repeat this step if
 the application user changes. These are operating system permissions on files,
 separate from the Kapua account and broker permissions.
 
-## 4.7 Receive and Verify Update Notifications
+## 4.7 How Update Notifications Work
 
-Kapua forwards update offers through its device request endpoint:
+The H2Train platform team manages update notifications through Kapua. End users
+receive them on their device without accessing the Kapua console or sending
+device requests themselves.
 
-```text
-{scopeId}/devices/{deviceId}/requests/
-```
+When an administrator makes an update available, Kapua sends an update offer
+through Kura's existing MQTT connection. The installed OSGi receiver captures
+the offer and stores it in a local file. Cardia reads this file and displays a
+notification when the offer is active and its version is newer than the
+installed application.
 
-Replace `scopeId` with the relevant Kapua account scope and `deviceId` with the
-target device identifier. In the device request, address the receiver with the
-following Kura request settings:
+The notification allows the user to choose **Update** or **Later**. If **Update**
+is selected, Cardia manages the download, package verification, and installation,
+requesting system authorization when necessary. Selecting **Later** defers the
+update. Receipt of a notification does not mean that the update has already
+been installed.
 
-| Setting | Value |
-| --- | --- |
-| Application ID | `CARDIA-V1` |
-| Kura operation | `PUT` |
-| Resource | `update-offer` |
-
-The forwarded payload is a JSON object containing exactly these three string
-fields:
-
-| Field | Required content |
-| --- | --- |
-| `campaignId` | An identifier for the update campaign, starting with a letter or number and containing only letters, numbers, underscores, or hyphens; maximum 64 characters. |
-| `version` | The offered application version in `major.minor.patch` format, corresponding to the release to install. |
-| `expiresAt` | A future expiration time in UTC, expressed as an ISO 8601 timestamp ending in `Z`. |
-
-Use the surrounding request structure and API authentication required by your
-Kapua deployment. The `PUT` operation above is the operation forwarded to the
-Kura handler within that request.
-
-After accepting an offer, the receiver writes the JSON file and responds with
-`response.code=200`, the `campaignId`, and `status=received`. This response
-confirms that the offer was stored; it does not confirm installation of the
-application update.
-
-Cardia watches the directory and reads the offer. For an active campaign offering
-a newer version, it displays an update notification. The user can choose
-**Update** or **Later**. The receiver delivers the offer; Cardia manages the
-application update, including package verification and system authorization
-when installation is requested. Cardia must run outside demo mode for its
-offer watcher to operate.
-
-To verify the setup:
-
-1. Send an offer for a newer available version with a future expiration time.
-2. Check the receiver's acknowledgment in Kapua.
-3. Confirm that `update-offer.json` exists and is readable by the Cardia user.
-4. Open Cardia and check that the expected update notification appears.
-
-Refer to the [receiver README](https://github.com/H2TRAIN-Organization/kura-receiver/blob/main/README.md)
-for the offer handling and application integration details.
+For notifications to appear, Cardia must run outside demo mode and its user
+must have the file read permissions described in section 4.6.3.
 
 ## 4.8 Configuration Outcome
 
